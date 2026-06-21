@@ -1,0 +1,4 @@
+model,a,b,p_measured,p_reconstructed
+linear,1.000,1.641,2.641,2.641
+pairwise,2.160,1.916,6.304,6.299
+paper,2,2,6,6

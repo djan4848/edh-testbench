@@ -1,0 +1,48 @@
+{
+  "E_knee": 8.965509790765193,
+  "E_knee_ci95": [
+    7.403094987750952,
+    10.857670466379624
+  ],
+  "n_low": 5,
+  "n_high": 9,
+  "q_low": -0.004802133111764729,
+  "q_low_ci95": [
+    -0.0414325025046159,
+    0.02769617200606969
+  ],
+  "q_high": 0.2579613143300323,
+  "q_high_ci95": [
+    0.19940244460600245,
+    0.3798727148853925
+  ],
+  "q_global_for_reference": 0.2518767515909147,
+  "piecewise_vs_line_wssr_improvement": 0.30656133383916884,
+  "p_high_N_range": [
+    8,
+    18
+  ],
+  "p_high": 2.91935555771797,
+  "one_over_p_high": 0.3425413520995331,
+  "loglin_cost_high": {
+    "slope": 2.91935555771797,
+    "r2": 0.9999373007047707,
+    "curvature": 0.06561394638932153,
+    "note": "convex: exponent steepening; treat power law as LOCAL"
+  },
+  "loglin_nstar_high": {
+    "slope": 0.2579613143300323,
+    "r2": 0.8345500384126469,
+    "curvature": 0.7723680020085049,
+    "note": "convex: exponent steepening; treat power law as LOCAL"
+  },
+  "verdicts": {
+    "H3_strong_single_driver": "FALSEADA",
+    "cost_driven_high_regime": "VERIFICADO",
+    "coordination_driven_low_regime": "CONFIRMADO"
+  },
+  "plateau_confirmed": true,
+  "extend_recommended": false,
+  "extend_reason": "high regime well sampled and below grid ceiling; no extension",
+  "note_honesty": "q_global~0.235 ~ eq.(15) 0.25 is a mixing coincidence; the test is q_high vs 1/p_high. This vindicates the q~=1/p design over pre-registering a fixed number."
+}

@@ -1,0 +1,63 @@
+{
+  "unit_formation": {
+    "dAIS_unit_lag1_median": -0.6517657778534702,
+    "dAIS_unit_lag1_ci95": [
+      -0.6530808558939156,
+      -0.6501250978432995
+    ],
+    "dAIS_unit_lag2_median": -0.8316262488563941,
+    "dAIS_unit_lag2_ci95": [
+      -0.8345952605611167,
+      -0.8304734227491225
+    ],
+    "macro_AIS_coupled_lag1": 0.6386983558091031,
+    "macro_AIS_coupled_lag2": 0.7715393892906257,
+    "micro_AIS_coupled_lag1": 0.2829546248181215,
+    "micro_AIS_coupled_lag2": 0.34463960711240105,
+    "macro_markov_excess": 0.20798712298740715,
+    "micro_markov_excess": 0.21800308913109168,
+    "unit_more_predictable": false,
+    "macro_coherent": true,
+    "unit_formation": false
+  },
+  "bridge": {
+    "rows": [
+      {
+        "coupling": 0.0,
+        "I_nopred": 1.897192936115296e-06,
+        "dissipation": 0.5368452821041388
+      },
+      {
+        "coupling": 0.2,
+        "I_nopred": 0.0016109550260086202,
+        "dissipation": 0.5368452821041388
+      },
+      {
+        "coupling": 0.4,
+        "I_nopred": 0.006361875032625995,
+        "dissipation": 0.5368452821041388
+      },
+      {
+        "coupling": 0.6,
+        "I_nopred": 0.013695016312041654,
+        "dissipation": 0.5368452821041388
+      },
+      {
+        "coupling": 0.8,
+        "I_nopred": 0.02356879359272937,
+        "dissipation": 0.5368452821041388
+      },
+      {
+        "coupling": 1.0,
+        "I_nopred": 0.035053635660849326,
+        "dissipation": 0.5368452821041388
+      }
+    ],
+    "correlation": NaN,
+    "bound_holds": true,
+    "bridge": false
+  },
+  "verdict_P2_RG": "DISSOLUTION_DEAD",
+  "scope": "FIXED-BOUNDARY PICARD model (omits paper section 6.5 / eq.20)",
+  "section_6_status": "PENDING - fixed-boundary dissolves; the faithful test with co-evolving plastic boundary (autopoietic, eq.20) is required before any section-6 verdict. DISSOLUTION_DEAD applies ONLY to the AIS/I-operator idea on this model."
+}

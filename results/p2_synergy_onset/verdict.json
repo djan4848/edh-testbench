@@ -1,0 +1,118 @@
+{
+  "symmetric": {
+    "verdict": "FALSEADA/no-onset",
+    "reason": "synergy does NOT onset under emergent coupling (dSyn~0); H2 ordering not realized",
+    "controls": {
+      "main": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": 0.007609863022709048,
+        "iso_syn": 0.05380881968464826,
+        "d_unq": -0.06643564544323971,
+        "iso_unq": 0.10370543447606008,
+        "d_red": -0.0003054385726640742,
+        "iso_red": 0.002806969863629606
+      },
+      "placebo": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": -0.0003840313968777896,
+        "iso_syn": 0.0541238360279719,
+        "d_unq": 0.002938889295571174,
+        "iso_unq": 0.10362747363800379,
+        "d_red": 5.1828641534080605e-05,
+        "iso_red": 0.002824371821839184
+      },
+      "temporal": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": 0.00018671790374102473,
+        "iso_syn": 0.05875758309729362,
+        "d_unq": -0.0008287126057607755,
+        "iso_unq": 0.05996747925107411,
+        "d_red": -0.0003054385726640742,
+        "iso_red": 0.002806969863629606
+      },
+      "target": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": -0.00041439711957106686,
+        "iso_syn": 0.051362896739281426,
+        "d_unq": 3.108450431590452e-05,
+        "iso_unq": 0.014393849504977598,
+        "d_red": -5.426398389631923e-05,
+        "iso_red": 0.0016038629934286804
+      }
+    }
+  },
+  "asymmetric": {
+    "verdict": "FALSEADA/no-onset",
+    "reason": "synergy does NOT onset under emergent coupling (dSyn~0); H2 ordering not realized",
+    "controls": {
+      "main": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": 0.005768635885561664,
+        "iso_syn": 0.05379503807046438,
+        "d_unq": -0.05342602108094465,
+        "iso_unq": 0.0832404343936943,
+        "d_red": -0.00024058521043586516,
+        "iso_red": 0.002644537485601778
+      },
+      "placebo": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": 6.917326097978701e-05,
+        "iso_syn": 0.05357319181457452,
+        "d_unq": 0.0018327219380649578,
+        "iso_unq": 0.0834192171410869,
+        "d_red": -2.451714918714175e-05,
+        "iso_red": 0.0027685378253452107
+      },
+      "temporal": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": -0.00020505129433170816,
+        "iso_syn": 0.05777749619039329,
+        "d_unq": -0.00018526782993067773,
+        "iso_unq": 0.04774659889301833,
+        "d_red": -0.00024058521043586516,
+        "iso_red": 0.002644537485601778
+      },
+      "target": {
+        "median_delta": NaN,
+        "p_one_sided": NaN,
+        "n_used": 0,
+        "syn_onset_rate": 0.0,
+        "unq_onset_rate": 0.0,
+        "d_syn": -0.00027453087861319646,
+        "iso_syn": 0.051373664291853485,
+        "d_unq": -0.0001537327932039882,
+        "iso_unq": 0.014472575477065914,
+        "d_red": -3.1244351711656016e-05,
+        "iso_red": 0.001550168801201282
+      }
+    }
+  }
+}

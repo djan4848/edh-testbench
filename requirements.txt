@@ -1,0 +1,13 @@
+numpy
+scipy
+matplotlib
+pyyaml
+pytest
+tqdm
+pandas
+ecos
+# BROJA_2PID is NOT on PyPI. Install from source:
+#   git clone https://github.com/Abzinger/BROJA_2PID
+#   pip install -e BROJA_2PID
+# It installs as the package `broja2pid`; edh/pid.py registers the
+# `BROJA_2PID` module alias the reference wrapper expects.

@@ -1,0 +1,6 @@
+check,fixed_dAIS,fixed_ci,plastic_dAIS,plastic_ci,spec_delta,specialized,sign_flip
+beta=4.0 (hebbian),-0.8014,"[-0.8053, -0.7965]",-0.2378,"[-0.2411, -0.2366]",0.3748,True,False
+beta=5.0 (hebbian),-0.8812,"[-0.8847, -0.8692]",-0.4889,"[-0.4932, -0.485]",0.3988,True,False
+beta=2.5 NON-HEBBIAN (consensus),-0.5448,"[-0.5465, -0.5426]",0.0599,"[0.0561, 0.0608]",-0.0002,False,False
+coupling=0.5 (hebbian),-0.5045,"[-0.5058, -0.5022]",-0.0483,"[-0.05, -0.0466]",0.1718,True,False
+coupling=1.5 (hebbian),-0.5738,"[-0.5765, -0.5711]",0.349,"[0.3459, 0.351]",0.1718,True,True

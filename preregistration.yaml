@@ -1,0 +1,182 @@
+# Pre-registration for the Entropic Drive Hypothesis test bench.
+# Statistics, thresholds and decision rules fixed BEFORE any production run;
+# report.py applies these rules mechanically and may print FALSEADA.
+#
+# P1 was REFORMULATED before any P1 data was generated (legitimate amendment):
+# the strong verdict tests the RELATION q ~= 1/p, not a fixed number, to avoid
+# coupling falsification to the paper's internal inconsistency:
+#   eq.(12): analog cost ~ N^6   ->  p ~= 6
+#   eq.(15): N* ~ (E_protocol/k_B T)^{1/4}  ->  q ~= 0.25
+# Dominant balance  k_B*T*N*^p ~= E_protocol  =>  q := exp(N* vs E/kT) = 1/p.
+#   p=6 -> q=1/6~=0.167 (NOT 0.25);  p=4 -> q=0.25.
+# p~=6 and q~=0.25 cannot coexist. The mechanism the paper claims as new is
+# q = 1/p; that is what decides. 6 and 1/4 are secondary annotated comparisons.
+# lambda_tradeoff is frozen MANUALLY after exp_p1_calibrate_lambda.py (see §4 of
+# the calibration spec); it is a deliberate act, not auto-written.
+
+P1:
+  description: >
+    Mide el exponente del coste analogico p (del bookkeeping de entropia) y el
+    exponente del umbral q (de N* frente a E_protocol/k_B*T), y testa la
+    prediccion de balance dominante q = 1/p. Esa relacion es la unica
+    contribucion que el paper reclama como nueva, y se testa con independencia
+    de los valores numericos concretos.
+
+  fixed_parameters:
+    k_B: 1.0
+    T: 1.0                         # unidades k_B = 1
+    lambda_tradeoff: 1.0           # FROZEN (linear/primary model) from
+                                   # exp_p1_calibrate_lambda.py: smallest
+                                   # valid+centered lambda (N*=10.05). lambda fixes
+                                   # the prefactor/sharpness, not the slope q.
+    lambda_tradeoff_pairwise: 1.0  # FROZEN (pairwise M~N^2 model, separate
+                                   # recalibration with auto E_center=3798.8):
+                                   # smallest valid+centered lambda, N*=10.00,
+                                   # chi_max~=0.07 (~5x the linear SNR).
+    note: >
+      lambda y T se mantienen constantes en todo P1 para que el exponente q no
+      se confunda con un cambio de prefactor. Su robustez se testa por separado:
+      q debe sobrevivir a 2-3 valores de lambda; si q depende de lambda,
+      reportarlo.
+
+  cost_exponent_p:
+    statistic: "pendiente OLS de log(dS_analog/dt) vs log(N)"
+    source: >
+      edh.entropy. La funcion de coste recibe SOLO el microestado realizado
+      (senales emitidas, separaciones, bits borrados, T); NUNCA recibe N. El
+      escalado en N es por tanto emergente. (test_no_hardcoded_cost garantiza la
+      firma sin N como guarda principal; el escaneo AST es secundario.)
+    mode: "analog-only, sin dinamica de adaptacion (mide la ley de coste pura)"
+    N_grid: [2, 20]
+    n_seeds: 30
+    estimate: "pendiente OLS; IC 95% por bootstrap de semillas"
+
+  threshold_exponent_q:
+    statistic: "pendiente de log(N*) vs log(E_protocol / (k_B*T))"
+    order_parameter_phi: >
+      digitalidad operacional = composicionalidad del codigo poblacional
+      (similaridad topografica / IM entre partes-de-senal y partes-de-significado).
+      NO un dial abstracto.
+    N_star_method: >
+      pico de chi(N) = Var_semillas[phi(N)]; N* SUB-ENTERO por interpolacion
+      parabolica de chi en torno al maximo (no el N entero del argmax).
+    sweep_range: >
+      NO se hardcodean decadas. El rango se DERIVA para que N* caiga en accept_band
+      [3,18], usando p (de cost_exponent_p), N_peak (de la calibracion) y E_center
+      (E_protocol_center de la calibracion = 40):
+        E_lo = E_center * (3  / N_peak) ** p
+        E_hi = E_center * (18 / N_peak) ** p
+      Esto SOLO fija el rango de barrido; N* se MIDE en cada punto. Con p~=2.64 y
+      N_peak~=10.05 esto da ~2 decadas de E y ~0.78 decadas de N* (mas palanca que
+      4 decadas a p=6).
+    E_protocol_points: 12          # log-espaciados entre E_lo y E_hi (10-12)
+    n_seeds: 30                    # subir si el IC de N* sale ancho (chi modesto)
+    estimate: >
+      N* por punto con IC 95% bootstrap de semillas; IC de la pendiente por
+      propagacion Monte Carlo: muestrea un N* por punto de su distribucion
+      bootstrap, ajusta la pendiente, repite -> distribucion de q.
+
+  cross_check_T:
+    enabled: true
+    statistic: "pendiente de log(N*) vs log(1/T) a E_protocol fijo"
+    expectation: "~= q  (el paper escribe E_protocol/k_B*T, dependencia simetrica)"
+    role: "secundario; discrepancia fuerte = aviso de que el balance no es limpio"
+
+  power_guards:
+    # min_E_decades RETIRADO como vinculante: era un proxy en las unidades
+    # equivocadas (asumia p~6). El guard fisicamente vinculante es el rango de N*,
+    # no las decadas de E. Con p=2.64, ~2 decadas de E dan ~0.78 decadas de N*
+    # (N~3..18), MAS palanca que 4 decadas a p=6. Se conserva como informativo.
+    min_E_decades_informational: 2
+    min_logN_star_range: 0.4       # VINCULANTE: rango de log10(N*) que cubre el barrido
+    require_transition_fraction: 0.7   # VINCULANTE: frac. de puntos con pico de chi real
+    max_q_CI_halfwidth_rel: 0.5    # VINCULANTE: semianchura del IC de q < 0.5*|q|
+
+  primary_test:
+    relation: "el IC de q solapa 1/p_measured (propagando la incertidumbre de p)"
+    null_to_exclude: "q <= 0  (N* no escala con E_protocol => no hay umbral)"
+    decision:
+      VERIFICADA: "power_guards OK  Y  IC(q) excluye 0  Y  IC(q) solapa 1/p_measured"
+      FALSEADA:   "power_guards OK  Y  IC(q) excluye 0  Y  IC(q) NO solapa 1/p_measured"
+      INCONCLUSO: "power_guards fallan  O  IC(q) incluye 0"
+
+  secondary_report:
+    paper_cost_exponent_eq12: 6
+    paper_threshold_exponent_eq15: 0.25
+    implied_q_if_p_is_6: 0.1667
+    implied_p_if_q_is_quarter: 4
+    flag: >
+      Reportar p_measured vs 6, y q_measured vs {0.25, 0.167}. Marcar la
+      inconsistencia (12)<->(15): a lo sumo uno de {p~=6, q~=0.25} puede
+      cumplirse junto con la relacion q=1/p. Si el mecanismo (q~=1/p) se cumple
+      pero los numeros difieren de 6 y 1/4, P1-mecanismo es VERIFICADA y los
+      exponentes concretos se reportan como dependientes del modelo, no como
+      refutacion.
+
+  links:
+    P3_crossover_N: "el N de cruce dS/dt analog>digital debe coincidir (+-1) con N*"
+
+P3:
+  statistic: "N de primer cruce dS/dt analog>digital"
+  decision: "VERIFICADA si existe cruce y coincide (±1) con N* de P1; si no, FALSEADA/INCONCLUSO"
+
+P2:
+  statistic: "mediana de Delta = onset(Unq)-onset(Syn) sobre S semillas"
+  alpha: 0.01
+  decision: "VERIFICADA si mediana>0 con test una cola p<alpha Y placebo no-significativo; FALSEADA si mediana<=0 significativo; si no -> INCONCLUSO"
+
+P2_AIS:
+  # FROZEN before C1 (Track B). Rehabilitated AIS/bridge idea on the signal-level
+  # bit-vector state (where the digital/coupled phase is NOT degenerate, unlike
+  # Track A's scalar digitality). Falsification lock is binding.
+  dip_recovery:
+    statistic: "AIS(t)=I(x_t;x_{t-1..k}) a nivel de bit-vector, ensemble-fixed-t, alrededor de t_c"
+    criterion: "AIS cae bajo baseline tras t_c y luego recupera por encima de umbral; cuantificar dip y recovery"
+  universality:
+    criterion: "mismo signature entre réplicas, fuerzas de acoplamiento y los dos sistemas"
+  thermodynamic_bridge:
+    statistic: "I_nopred = I(input_t;x_{t+1}) - I(input_{t+1};x_t) vs disipación Landauer medida"
+    criterion: "I_nopred acota inferiormente Y correlaciona positivamente con la disipación por paso (Still 2012)"
+  falsification_lock:
+    DEAD: "NO dip-recovery (C2) Y bridge NO se cumple (C3)"
+    SUPPORTED: "dip-recovery universal Y bridge se cumple"
+    PARTIAL: "solo una mitad; reportar cuál"
+
+P2_RG:
+  # FROZEN before C2-RG. Separate hypothesis raised by the C1 de-individuation
+  # finding (NOT a reopening of H2, which stays FALSIFIED): is the coupling an RG
+  # coarse-graining step (a macro-unit / I-operator forms, eq.19) or dissolution
+  # (structure destroyed)? Measured at the UNIT level on the emergent PICARD model.
+  unit_formation:
+    statistic: "dAIS_unit = AIS(coupled pair as one unit) - AIS(uncoupled pair), size-controlled"
+    criterion: "dAIS_unit > 0, CI excludes 0  AND  macro-dynamics coherent/self-similar"
+  bridge:
+    statistic: "I_nopred = I(input_t;x_{t+1}) - I(input_{t+1};x_t) vs measured Landauer dissipation (Still 2012)"
+    criterion: "I_nopred lower-bounds AND correlates with the dissipation"
+  decision:
+    RG_COARSE_GRAINING: "unit_formation holds -> the de-individuation is an RG step
+      (I-operator, eq.19); H2 measured at the wrong level (synergy between sub-units);
+      the signature lives at the unit level. REHABILITATES section 6 (not H2)."
+    DISSOLUTION_DEAD: "NO unit_formation AND NO bridge -> the AIS/I-operator/RG idea
+      is registered DEAD, and this UNDERMINES the section-6 RG-cascade mechanism
+      (coupling destroys structure rather than building units)."
+    PARTIAL: "only one half holds; report which, do not collapse to one verdict."
+
+P2_RG_plastic:
+  # FROZEN before running. The LAST model elaboration (no fourth iteration): the
+  # autopoietic plastic-boundary model (section 6.5 / eq.20), where each agent's
+  # FILTER bits (which neighbour bits it attends to, and how strongly) are state,
+  # read AND written by the same rule -- a single self-producing loop. This is the
+  # paper's OWN unit-formation mechanism, omitted by the fixed-boundary test.
+  precondition:
+    criterion: "filters F_i specialize toward the partner (selectivity > noise-partner control, CI excludes 0); if not, the test is not faithful -> INVALID_TEST"
+  unit_formation:
+    statistic: "dAIS_unit = AIS(coupled plastic pair) - AIS(uncoupled), size-controlled, lag 1,2,3"
+    criterion: "dAIS_unit > 0, CI excludes 0  AND  macro coherent/self-similar  AND  dip WITH recovery (unit AIS consolidates after t_c, unlike the fixed-boundary dip-without-recovery)"
+  decision:
+    SECTION_6_REHABILITATED: "precondition OK AND unit_formation -> the RG cascade works, but ONLY with boundary plasticity; fixed-rule self-reference is not enough. Finding: section 6 requires section 6.5."
+    SECTION_6_FALSIFIED: "precondition OK AND NO unit_formation -> with the full autopoietic boundary there is ALSO dissolution -> the section-6 RG-cascade mechanism is genuinely FALSIFIED by direct measurement with the paper's own machinery. STOP."
+    INVALID_TEST: "precondition fails -> filters did not become plastic/specialized; fix before judging section 6."
+
+seeds: {n_seeds: 30, master_seed: 20250621}
+adequacy_min: 4.0

@@ -1,0 +1,134 @@
+{
+  "profiles": {
+    "linear|E=1.6|plateau": {
+      "N_star": 5.594,
+      "raw_ais": {
+        "n_dip": 8.0,
+        "dist_to_nstar": 2.4059999999999997,
+        "recovery": 0.0,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": 7.0,
+        "dist_to_nstar": 1.4059999999999997,
+        "recovery": 0.018523985250062214,
+        "dip_near_nstar": false
+      }
+    },
+    "linear|E=3.44|plateau": {
+      "N_star": 5.589,
+      "raw_ais": {
+        "n_dip": 9.0,
+        "dist_to_nstar": 3.4109999999999996,
+        "recovery": 0.0,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": 9.0,
+        "dist_to_nstar": 3.4109999999999996,
+        "recovery": 0.0,
+        "dip_near_nstar": false
+      }
+    },
+    "linear|E=34.3|rise": {
+      "N_star": 10.929,
+      "raw_ais": {
+        "n_dip": 5.0,
+        "dist_to_nstar": 5.929,
+        "recovery": 0.19675872402454214,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": 5.0,
+        "dist_to_nstar": 5.929,
+        "recovery": 0.06468416142083705,
+        "dip_near_nstar": false
+      }
+    },
+    "linear|E=158|rise": {
+      "N_star": 16.393,
+      "raw_ais": {
+        "n_dip": NaN,
+        "dist_to_nstar": NaN,
+        "recovery": NaN,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": NaN,
+        "dist_to_nstar": NaN,
+        "recovery": NaN,
+        "dip_near_nstar": false
+      }
+    },
+    "pairwise|E=1.92|plateau": {
+      "N_star": 4.641867676308346,
+      "raw_ais": {
+        "n_dip": 9.0,
+        "dist_to_nstar": 4.358132323691654,
+        "recovery": 0.0,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": 2.0,
+        "dist_to_nstar": 2.6418676763083457,
+        "recovery": 0.05489283801139272,
+        "dip_near_nstar": true
+      }
+    },
+    "pairwise|E=28.1|plateau": {
+      "N_star": 4.731813188500023,
+      "raw_ais": {
+        "n_dip": 9.0,
+        "dist_to_nstar": 4.268186811499977,
+        "recovery": 0.0,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": 2.0,
+        "dist_to_nstar": 2.7318131885000234,
+        "recovery": 0.05870428370084668,
+        "dip_near_nstar": true
+      }
+    },
+    "pairwise|E=2.47e+03|rise": {
+      "N_star": 9.437419786698186,
+      "raw_ais": {
+        "n_dip": 5.0,
+        "dist_to_nstar": 4.437419786698186,
+        "recovery": 0.08978293570715395,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": 5.0,
+        "dist_to_nstar": 4.437419786698186,
+        "recovery": 0.07835029479036848,
+        "dip_near_nstar": false
+      }
+    },
+    "pairwise|E=3.62e+04|rise": {
+      "N_star": 14.48857260653879,
+      "raw_ais": {
+        "n_dip": NaN,
+        "dist_to_nstar": NaN,
+        "recovery": NaN,
+        "dip_near_nstar": false
+      },
+      "normalized": {
+        "n_dip": NaN,
+        "dist_to_nstar": NaN,
+        "recovery": NaN,
+        "dip_near_nstar": false
+      }
+    }
+  },
+  "verdict": {
+    "raw_ais_dip_fraction": 0.0,
+    "normalized_dip_fraction": 0.25,
+    "within_model_consistency_normalized": {
+      "linear": 0.0,
+      "pairwise": 0.5
+    },
+    "universal_normalized": false,
+    "note": "universal = dip-near-N* holds in >=75% of profiles AND in both models; raw AIS conflates spread, so the normalized metric is the primary read."
+  }
+}

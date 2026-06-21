@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Virtual env (the project venv lives OFF the SSD; see README/activate.sh).
+# Any in-project .venv is a broken exFAT stub.
+.venv/
+venv/
+
+# Editor / OS / tooling
+.claude/
+.vscode/
+.idea/
+.DS_Store
+
+# Regenerable caches & redundant artifacts
+**/*.npz
+reference/files.zip
+REPORT_generated.md
+
+# Results: figures (.png), CSV data and JSON verdicts ARE kept (they are the
+# evidence the report cites and are small). Only the regenerable bootstrap
+# caches (*.npz, matched above) are excluded.

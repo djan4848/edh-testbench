@@ -1,0 +1,30 @@
+{
+  "precondition": {
+    "sel_real": 0.4488243815104166,
+    "sel_noise": 0.27818066406249997,
+    "sel_isolated": 0.001156850961538458,
+    "delta_selectivity_median": 0.17055908203125003,
+    "delta_selectivity_ci95": [
+      0.169072265625,
+      0.1716455078125
+    ],
+    "specialized": true
+  },
+  "unit_formation": {
+    "dAIS_unit_lag1_median": 0.10805388701642471,
+    "dAIS_unit_lag1_ci95": [
+      0.10615590778194778,
+      0.10914800062105384
+    ],
+    "macro_AIS_coupled_lag1": 0.8307822902854749,
+    "unit_more_predictable": true,
+    "macro_coherent": true
+  },
+  "dip": {
+    "dip": 0.5213724091750691,
+    "end": 0.8377493357280942,
+    "recovers": true
+  },
+  "verdict_P2_RG_plastic": "SECTION_6_REHABILITATED",
+  "robustness_note": "REGIME-DEPENDENT: flip holds in beta-window ~[1,3] (negative at beta>=4), needs strong coupling (fails c=0.5), Hebbian-specific so far (non-Hebbian consensus variant failed specialization precondition). Necessity of plasticity robust; sufficiency narrow."
+}

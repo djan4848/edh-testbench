@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edh-testbench"
+version = "0.1.0"
+description = "Falsification test bench for the Entropic Drive Hypothesis (EDH)"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "pyyaml",
+    "pytest",
+    "tqdm",
+    "pandas",
+    "ecos",
+]
+
+[tool.setuptools]
+packages = ["edh"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

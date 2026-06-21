@@ -1,0 +1,86 @@
+{
+  "rows": [
+    {
+      "check": "beta=4.0 (hebbian)",
+      "fixed_dAIS": -0.8014,
+      "fixed_ci": [
+        -0.8053,
+        -0.7965
+      ],
+      "plastic_dAIS": -0.2378,
+      "plastic_ci": [
+        -0.2411,
+        -0.2366
+      ],
+      "spec_delta": 0.3748,
+      "specialized": true,
+      "sign_flip": false
+    },
+    {
+      "check": "beta=5.0 (hebbian)",
+      "fixed_dAIS": -0.8812,
+      "fixed_ci": [
+        -0.8847,
+        -0.8692
+      ],
+      "plastic_dAIS": -0.4889,
+      "plastic_ci": [
+        -0.4932,
+        -0.485
+      ],
+      "spec_delta": 0.3988,
+      "specialized": true,
+      "sign_flip": false
+    },
+    {
+      "check": "beta=2.5 NON-HEBBIAN (consensus)",
+      "fixed_dAIS": -0.5448,
+      "fixed_ci": [
+        -0.5465,
+        -0.5426
+      ],
+      "plastic_dAIS": 0.0599,
+      "plastic_ci": [
+        0.0561,
+        0.0608
+      ],
+      "spec_delta": -0.0002,
+      "specialized": false,
+      "sign_flip": false
+    },
+    {
+      "check": "coupling=0.5 (hebbian)",
+      "fixed_dAIS": -0.5045,
+      "fixed_ci": [
+        -0.5058,
+        -0.5022
+      ],
+      "plastic_dAIS": -0.0483,
+      "plastic_ci": [
+        -0.05,
+        -0.0466
+      ],
+      "spec_delta": 0.1718,
+      "specialized": true,
+      "sign_flip": false
+    },
+    {
+      "check": "coupling=1.5 (hebbian)",
+      "fixed_dAIS": -0.5738,
+      "fixed_ci": [
+        -0.5765,
+        -0.5711
+      ],
+      "plastic_dAIS": 0.349,
+      "plastic_ci": [
+        0.3459,
+        0.351
+      ],
+      "spec_delta": 0.1718,
+      "specialized": true,
+      "sign_flip": true
+    }
+  ],
+  "nonhebbian_flips": false,
+  "section6_generality": "flip is Hebbian-specific (existence proof only)"
+}
