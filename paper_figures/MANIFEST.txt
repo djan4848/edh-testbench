@@ -1,0 +1,12 @@
+file -> paper section -> source
+f1_cost_decomposition.pdf / .png  ->  Main / P1 axis A  ->  exp_p1_decompose_cost (cached)
+f2_two_regime_Nstar.pdf / .png  ->  Main / P1 axis B  ->  exp_p1_regimes (npz + regime_verdict cached)
+f3_P3_entropy_crossover.pdf / .png  ->  Main / P3  ->  exp_p3_entropy_crossover (cached, panels combined)
+f4_H2_synergy_unique.pdf / .png  ->  Main / P2-H2  ->  exp_p2_synergy_onset (example re-sim, seed 0)
+f5_fixed_boundary_dissolution.pdf / .png  ->  Main / P2-RG fixed  ->  exp_p2_rg (ΔAIS+dip re-derived; bridge cached)
+f6_plastic_boundary_formation.pdf / .png  ->  Main / P2-RG plastic (§6.5)  ->  exp_p2_rg_plastic (precondition cached; ΔAIS+dip re-derived)
+f7_beta_sign_flip.pdf / .png  ->  Main / §6 β-gate  ->  exp_p2_beta_robustness (cached)
+supp/s1_susceptibility_calibration.pdf / .png  ->  Supp / calibration  ->  exp_p1_calibrate_lambda (χ re-derived, same seeds)
+supp/s2_Nstar_vs_E.pdf / .png  ->  Supp / P1 q-sweep  ->  exp_p1_scaling (cached)
+supp/s3_ais_vs_N_linear.pdf / .png  ->  Supp / AIS retrospective  ->  exp_ais_retro (cached)
+supp/s4_ais_vs_N_pairwise.pdf / .png  ->  Supp / AIS retrospective  ->  exp_ais_retro (cached)
